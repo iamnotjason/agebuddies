@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Buddies | Age of Empires Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #121212;
+            --secondary-bg: #1e1e1e;
+            --discord-color: #5865F2;
+            --accent-color: #ffd700; /* Gold for skill badge */
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2070'); /* Placeholder gaming bg */
+            background-size: cover;
+            background-position: center;
+            border-bottom: 4px solid var(--discord-color);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            font-weight: 800;
+        }
+
+        .promo-text {
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            margin: 20px 0 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Large Discord Link */
+        .discord-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--discord-color);
+            color: white;
+            padding: 24px 48px;
+            font-size: 2rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
+
+        .discord-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6);
+        }
+
+        .skill-badge {
+            display: inline-block;
+            margin-top: 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .about-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Grid for "What We Do" */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--discord-color);
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .discord-link { font-size: 1.4rem; padding: 15px 30px; }
+            .promo-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Age Buddies</h1>
+        <p class="promo-text">Did someone send you this link from a game? Come join the Discord!</p>
+        
+        <a href="https://discord.gg/anQYGVQX2a" class="discord-link" target="_blank">
+            Join the Discord
+        </a>
+        <br>
+        <div class="skill-badge">⭐ All Skill Levels Welcome ⭐</div>
+    </header>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>About Our Group</h2>
+            <p class="about-content">
+                We are a toxic-free community of players ranging from 500 to 2000+ ELO, 
+                dedicated to improving together through active voice chat and coaching. 
+                Whether you’re a beginner or a veteran, you'll find a supportive team environment here.
+            </p>
+        </section>
+
+        <h2 style="text-align: center;">What We Do</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Voice Comms</h3>
+                <p>We prioritize team coordination and hanging out in Discord voice channels while we play.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Skill Coaching</h3>
+                <p>High-ELO players regularly help lower-ELO members with build orders and strategy.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Active Games</h3>
+                <p>From serious ladder climbing to relaxed lobbies, there is always a game running.</p>
+            </div>
+            <div class="feature-card">
+                <h3>No Toxicity</h3>
+                <p>We maintain a strict "no-salt" policy to ensure everyone actually enjoys their time.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Age Buddies. Come play with us!
+    </footer>
+
+</body>
+</html>
