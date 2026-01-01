@@ -1,38 +1,213 @@
-<meta charset="utf-8" emacsmode="-*- markdown -*-"><style class="fallback">body{visibility:hidden}</style><link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/dark.css?">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Buddies | Age of Empires Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #121212;
+            --secondary-bg: #1e1e1e;
+            --discord-color: #5865F2;
+            --accent-color: #ffd700; /* Gold for skill badge */
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+        }
 
-![](Age_Buddies_Logo.png)
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
 
-   Join Our Community, where every game is better with allies on your side!
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('./chrome_xJD0t0XD0E.png'); 
+						/* Placeholder gaming bg */
+            background-size: cover;
+            background-position: right;
+            border-bottom: 4px solid var(--discord-color);
+        }
 
-# Welcome to Age Buddies!
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            font-weight: 800;
+        }
 
-------
+        .promo-text {
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            margin: 20px 0 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-Are you an Age of Empires II player who loves the game and wants to connect with a fun, supportive community? You've found your home! Join us for games, strategy and a fun environment to share the love of the game in a friendly space. We're an online cohort of AoE 2 enthusiasts, united by our passion for the game and our desire to have a great time together.
+        /* Large Discord Link */
+        .discord-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--discord-color);
+            color: white;
+            padding: 24px 48px;
+            font-size: 2rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
 
-## About our group
+        .discord-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6);
+        }
 
-We're a group of dedicated Age of Empires II players with an Elo rating typically between 700 and 1300. Founded from encountering fun and skilled players on the ladder, our group has grown through invites slowly over time. We are here to have fun playing the game together with this great community and are built from helping each other improve! Team games are regularly played on all nights across a wide range of time zones, so there is always someone on to play with, and players use each other to practice 1v1 strategies for RM or Tournaments.
+        .skill-badge {
+            display: inline-block;
+            margin-top: 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
 
-## What We Do
+        /* Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
 
-Here's what you can expect:
+        .about-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-- **Team Games:** We frequently organize and play team games over voice, bringing strategy and cooperation to the forefront.
-- **1v1 Practice:** Looking to sharpen your individual skills? We regularly practice 1v1 matches, offering a supportive environment for improvement.
-- **Community Games:** Beyond ranked play, we enjoy various community games, fostering camaraderie and diverse gameplay experiences.
-- **Climbing the Ladder:** We actively help each other climb higher in the ranked ladder, sharing tips, strategies, and encouragement. Our group has seen members rise from 900 elo to 1100 over the course of several months from consistent participation.
-- **Learn the Game:** One of the best aspects of this group is being able to teach new players the fundamentals of how to succeed in having fun, which also leads to winning!
-- **Friendly and welcoming environment:** Age Buddies is first and foremost a place for friendly discussion and banter. While the game gets frustrating at times, we respect the player behind the game.
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
 
+        .about-content {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-## Join Our Community!
+        /* Grid for "What We Do" */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
 
-Ready to jump into the action? We make it easy to connect and find games:
+        .feature-card {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+        }
 
-![https://discord.gg/FpMBPkCubb](join-us-on-discord.png)
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--discord-color);
+        }
 
-- **Discord:** Our primary hub for communication, game organizing, and general chat. We have an automatic lobby system to organize games with online players.
-- **Steam Group:** Join our Steam group to easily see who's online and connect for games. Message in the discord to get added.
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
 
-<!-- Markdeep: --><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .hero {
+        /* Swap to your mobile-optimized vertical image */
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                    url('./chrome_7M1kmhROsk.png');
+        
+        background-size: cover; /* This will now crop the vertical image perfectly */
+        background-position: center center;
+        height: 60vh; /* Adjusted height for phones */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Age Buddies</h1>
+        <p class="promo-text">Did someone send you this link from a game? Come join the Discord!</p>
+        
+        <a href="https://discord.gg/anQYGVQX2a" class="discord-link" target="_blank">
+            Join the Discord
+        </a>
+        <br>
+        <div class="skill-badge">⭐ All Skill Levels Welcome ⭐</div>
+    </header>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>About Our Group</h2>
+            <p class="about-content">
+                We are a toxic-free community of players ranging from 500 to 2000+ ELO, 
+                dedicated to improving together through active voice chat and coaching. 
+                Whether you’re a beginner or a veteran, you'll find a supportive team environment here.
+            </p>
+        </section>
+
+        <h2 style="text-align: center;">What We Do</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Voice Comms</h3>
+                <p>We prioritize team coordination and hanging out in Discord voice channels while we play.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Skill Coaching</h3>
+                <p>High-ELO players regularly help lower-ELO members with build orders and strategy.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Active Games</h3>
+                <p>From serious ladder climbing to relaxed lobbies, there is always a game running.</p>
+            </div>
+            <div class="feature-card">
+                <h3>No Toxicity</h3>
+                <p>We maintain a strict "no-salt" policy to ensure everyone actually enjoys their time.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Age Buddies. Come play with us!
+    </footer>
+
+</body>
+</html>
