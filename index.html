@@ -135,6 +135,26 @@
             color: var(--text-dim);
             margin-bottom: 0;
         }
+		
+		.about-header-container {
+			display: flex;
+			align-items: center; /* Vertically centers logo with text */
+			justify-content: center; /* Keeps it centered in the layout */
+			gap: 12px; /* Small space between logo and text */
+			margin-bottom: 20px; /* Matches your previous spacing */
+}
+
+.small-logo {
+			width: 90px;  /* Keeps it subtle and small */
+			height: 90px; /* Maintains square ratio */
+			object-fit: contain;
+			border-radius: 4px; /* Optional: rounds corners if your logo is square */
+}
+
+/* Ensure the H2 doesn't have extra margins that break the centering */
+.about-header-container h2 {
+    margin: 0; 
+}
 
         footer {
             text-align: center;
@@ -176,8 +196,10 @@
 
     <div class="container">
         <section class="about-section">
-            <h2>About Our Group</h2>
-            <p class="about-content">
+<div class="about-header-container">
+    <img src="./Age_Buddies_Logo.png" alt="Age Buddies Logo" class="small-logo">
+    <h2>About Our Group</h2>
+</div>            <p class="about-content">
                 We are a toxic-free community of players ranging from 500 to 2000+ ELO, 
                 dedicated to improving together through active voice chat and coaching. 
                 Whether you’re a beginner or a veteran, you'll find a supportive team environment here.
