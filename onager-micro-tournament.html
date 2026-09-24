@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onager Royale Championship | Age Buddies</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cinzel and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aoe: {
+                            dark: '#0e1117',
+                            card: '#161b22',
+                            border: '#2a313d',
+                            gold: '#d4af37',
+                            goldHover: '#f3ca40',
+                            crimson: '#8b0000',
+                            crimsonLight: '#e63946',
+                            parchment: '#f4e8c1',
+                            parchmentDark: '#c7b280'
+                        }
+                    },
+                    fontFamily: {
+                        medieval: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0e14;
+            color: #e2e8f0;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(139, 0, 0, 0.15), transparent 70%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05), transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.8);
+        }
+
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #fff3a7 0%, #d4af37 50%, #aa820a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-live {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-aoe-gold selection:text-black min-h-screen flex flex-col justify-between">
+
+    <!-- Top Announcement Banner -->
+    <div class="bg-gradient-to-r from-amber-950 via-aoe-crimson to-amber-950 border-b border-aoe-gold/40 text-aoe-parchment py-2.5 px-4 text-center text-xs sm:text-sm font-medium relative z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
+            <span class="flex items-center space-x-2">
+                <i class="fa-solid fa-bullhorn text-aoe-gold"></i>
+                <span class="font-bold uppercase tracking-wider text-white">Upcoming Event:</span>
+                <span>An open-signup tournament will be announced following this invitational!</span>
+            </span>
+            <a href="https://discord.gg/QrVPJdHRwv" target="_blank" class="inline-flex items-center space-x-1 text-aoe-gold hover:text-white underline font-bold ml-1 transition-colors">
+                <span>Join Discord for details</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-aoe-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="https://agebuddies.com" target="_blank" class="flex items-center space-x-3 group">
+                <img src="https://agebuddies.com/Age_Buddies_Logo.png" alt="Age Buddies Shield Logo" class="w-12 h-12 rounded-lg object-cover border border-aoe-gold/40 shadow-md group-hover:scale-105 transition-transform" />
+                <span class="font-medieval font-bold text-xl text-aoe-parchment group-hover:text-aoe-gold transition-colors tracking-wider">AGE BUDDIES</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medieval text-sm font-semibold tracking-wider">
+                <a href="#about" class="text-gray-300 hover:text-aoe-gold transition-colors">Overview</a>
+                <a href="#format" class="text-gray-300 hover:text-aoe-gold transition-colors">Rules & Format</a>
+                <a href="#prizes" class="text-gray-300 hover:text-aoe-gold transition-colors">Prize Pool</a>
+                <a href="#players" class="text-gray-300 hover:text-aoe-gold transition-colors">Players & Streams</a>
+            </nav>
+
+            <!-- Discord Button CTA -->
+            <div class="flex items-center space-x-4">
+                <a href="https://discord.gg/QrVPJdHRwv" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-md font-semibold text-xs uppercase tracking-wider transition-all flex items-center space-x-2 shadow-lg hover:shadow-indigo-500/30">
+                    <i class="fa-brands font-semibold fa-discord text-base"></i>
+                    <span class="hidden sm:inline">Join Discord</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero & Poster Section -->
+        <section id="about" class="relative py-12 md:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column: Title & Key Info -->
+                    <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-aoe-crimson/30 border border-aoe-crimsonLight/50 text-aoe-crimsonLight text-xs font-semibold uppercase tracking-widest">
+                            <span class="w-2 h-2 rounded-full bg-aoe-crimsonLight pulse-live"></span>
+                            <span>Onager Micro Tournament</span>
+                        </div>
+
+                        <h1 class="font-medieval text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-wide">
+                            ONAGER MICRO <br/>
+                            <span class="gold-text-gradient">TOURNAMENT</span>
+                        </h1>
+
+                        <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            8 players start with 3 onagers, in a close-quarters duel. Only the last player alive, wins the round. The 3 round winners and person with top kills will face off, in a final showdown match with a repair villager included.
+
+                        </p>
+
+                        <!-- Countdown Timer Card -->
+                        <div class="glass-panel p-6 rounded-xl border border-aoe-gold/30 gold-border-glow inline-block w-full max-w-md">
+                            <span class="text-xs font-mono uppercase tracking-widest text-aoe-gold block mb-3 text-center">
+                                Tournament Launch Countdown
+                            </span>
+                            <div id="countdown" class="grid grid-cols-4 gap-2 text-center font-medieval">
+                                <div class="bg-aoe-dark/80 p-3 rounded-lg border border-gray-800">
+                                    <span id="days" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                                    <span class="text-[10px] uppercase font-sans text-gray-400">Days</span>
+                                </div>
+                                <div class="bg-aoe-dark/80 p-3 rounded-lg border border-gray-800">
+                                    <span id="hours" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                                    <span class="text-[10px] uppercase font-sans text-gray-400">Hours</span>
+                                </div>
+                                <div class="bg-aoe-dark/80 p-3 rounded-lg border border-gray-800">
+                                    <span id="minutes" class="text-2xl sm:text-3xl font-bold text-white block">00</span>
+                                    <span class="text-[10px] uppercase font-sans text-gray-400">Mins</span>
+                                </div>
+                                <div class="bg-aoe-dark/80 p-3 rounded-lg border border-gray-800">
+                                    <span id="seconds" class="text-2xl sm:text-3xl font-bold text-aoe-crimsonLight block">00</span>
+                                    <span class="text-[10px] uppercase font-sans text-gray-400">Secs</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 text-xs text-gray-400 text-center font-mono flex items-center justify-center space-x-1">
+                                <i class="fa-regular fa-clock text-aoe-gold"></i>
+                                <span>October 2, 2026 @ 19:00 GMT</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#players" class="bg-gradient-to-r from-aoe-gold to-amber-600 hover:from-amber-400 hover:to-aoe-gold text-black font-medieval font-bold px-8 py-3.5 rounded-lg shadow-lg hover:shadow-aoe-gold/20 transition-all text-sm uppercase tracking-wider">
+                                <i class="fa-solid fa-tv mr-2"></i> Watch Streams
+                            </a>
+                            <a href="#format" class="bg-aoe-card hover:bg-aoe-border text-aoe-parchment font-medieval font-semibold px-6 py-3.5 rounded-lg border border-aoe-gold/30 hover:border-aoe-gold transition-all text-sm uppercase tracking-wider">
+                                View Rules
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Official Poster Art (Larger Size) -->
+                    <div class="lg:col-span-6 flex justify-center">
+                        <div class="relative group w-full max-w-xl">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-aoe-crimson via-aoe-gold to-aoe-crimson rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                            
+                            <div class="relative bg-aoe-dark border-2 border-aoe-gold/60 rounded-xl overflow-hidden shadow-2xl p-4">
+                                <a href="https://agebuddies.com/onager-micro-tournament.png" target="_blank"><img src="https://agebuddies.com/onager-micro-tournament.png" alt="Onager Micro Tournament Poster" class="w-full h-auto rounded-lg border border-aoe-gold/30 object-cover shadow-lg" /></a>
+                                <div class="p-3 text-center bg-aoe-card mt-3 rounded-b-lg">
+                                    <span class="text-sm text-aoe-parchment font-medieval font-semibold tracking-wide">Onager Micro Tournament Poster</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Rules & Format -->
+        <section id="format" class="py-16 bg-aoe-dark/60 border-y border-aoe-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="font-medieval text-3xl sm:text-4xl font-bold text-white mb-4">
+                        RULES & <span class="gold-text-gradient">GAME FORMAT</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base">
+                        Every player controls 3 Siege Onagers in a custom arena map. Quick thinking, micro-management, and friendly betrayals are guaranteed!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1: Qualification -->
+                    <div class="glass-panel p-6 rounded-xl border border-aoe-border hover:border-aoe-gold/50 transition-all relative group">
+                        <div class="w-12 h-12 rounded-lg bg-aoe-crimson/20 border border-aoe-crimsonLight/40 flex items-center justify-center text-aoe-crimsonLight text-xl font-bold font-medieval mb-4 group-hover:scale-110 transition-transform">
+                            01
+                        </div>
+                        <h3 class="font-medieval text-xl font-bold text-aoe-parchment mb-2">3 Qualifier Rounds</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            All 8 players enter the arena across 3 rounds in a free-for-all. The last player alive in each round claims 1 round point.
+                        </p>
+                    </div>
+
+                    <!-- Step 2: Wildcard / Kills -->
+                    <div class="glass-panel p-6 rounded-xl border border-aoe-border hover:border-aoe-gold/50 transition-all relative group">
+                        <div class="w-12 h-12 rounded-lg bg-aoe-gold/20 border border-aoe-gold/40 flex items-center justify-center text-aoe-gold text-xl font-bold font-medieval mb-4 group-hover:scale-110 transition-transform">
+                            02
+                        </div>
+                        <h3 class="font-medieval text-xl font-bold text-aoe-parchment mb-2">Most Kills Advancement</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            A finalist spot is awarded to the player with the highest overall kills across Rounds 1–3 as well.
+                        </p>
+                    </div>
+
+                    <!-- Step 3: Finals with Repair Villager -->
+                    <div class="glass-panel p-6 rounded-xl border border-aoe-border hover:border-aoe-gold/50 transition-all relative group">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-xl font-bold font-medieval mb-4 group-hover:scale-110 transition-transform">
+                            03
+                        </div>
+                        <h3 class="font-medieval text-xl font-bold text-aoe-parchment mb-2">Finals Twist: Villager</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Each player with a round point and the top kills face off. In Round 4, each player spawns with 3 Siege Onagers <strong class="text-emerald-400">+ 1 Repair Villager</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Demo Video Banner Card -->
+                <div class="mt-12 glass-panel rounded-2xl p-6 sm:p-8 border border-aoe-gold/30 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-full bg-red-600/20 border border-red-500 flex items-center justify-center text-red-500 text-2xl flex-shrink-0">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medieval text-xl font-bold text-white">Curious How Onager Royale Plays Out?</h4>
+                            <p class="text-sm text-gray-400">Watch the official gameplay demo video showcasing onager royale.</p>
+                        </div>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=Zp0ZD-nXgZE" target="_blank" class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-medieval font-bold px-6 py-3 rounded-lg transition-colors text-center text-sm uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg hover:shadow-red-600/30">
+                        <i class="fa-brands fa-youtube text-lg"></i>
+                        <span>Watch Demo Video</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Prize Pool -->
+        <section id="prizes" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="font-medieval text-3xl sm:text-4xl font-bold text-white mb-2">
+                        TOURNAMENT <span class="gold-text-gradient">PRIZE POOL</span>
+                    </h2>
+                    <p class="text-aoe-gold font-mono text-xl font-bold">$350 USD TOTAL</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    
+                    <!-- 2nd Place -->
+                    <div class="glass-panel p-6 rounded-xl border border-slate-700 text-center order-2 sm:order-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-2">🥈</div>
+                            <h3 class="font-medieval text-lg text-gray-300 font-bold">2nd Place</h3>
+                            <p class="text-xs text-gray-500 uppercase font-mono">Runner Up</p>
+                        </div>
+                        <div class="mt-6">
+                            <span class="text-3xl font-black text-white font-mono">$100</span>
+                            <span class="text-xs text-gray-400 block font-sans">USD</span>
+                        </div>
+                    </div>
+
+                    <!-- 1st Place (Champion) -->
+                    <div class="glass-panel p-8 rounded-2xl border-2 border-aoe-gold gold-border-glow text-center order-1 sm:order-2 bg-gradient-to-b from-aoe-card to-aoe-gold/10 transform sm:-translate-y-4">
+                        <div class="inline-block bg-aoe-gold text-black px-3 py-0.5 rounded-full text-[10px] font-bold font-mono uppercase mb-2">
+                            Champion
+                        </div>
+                        <div class="text-5xl mb-2">🏆</div>
+                        <h3 class="font-medieval text-2xl text-aoe-gold font-bold">1st Place</h3>
+                        <p class="text-xs text-gray-400 uppercase font-mono">Onager Royale Winner</p>
+                        <div class="mt-6">
+                            <span class="text-4xl font-black text-aoe-gold font-mono">$200</span>
+                            <span class="text-xs text-gray-300 block font-sans">USD</span>
+                        </div>
+                    </div>
+
+                    <!-- 3rd Place -->
+                    <div class="glass-panel p-6 rounded-xl border border-amber-900/40 text-center order-3 flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-2">🥉</div>
+                            <h3 class="font-medieval text-lg text-amber-600 font-bold">3rd Place</h3>
+                            <p class="text-xs text-gray-500 uppercase font-mono">Bronze Medalist</p>
+                        </div>
+                        <div class="mt-6">
+                            <span class="text-3xl font-black text-white font-mono">$50</span>
+                            <span class="text-xs text-gray-400 block font-sans">USD</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Player Streams Grid & Spectator -->
+        <section id="players" class="py-16 bg-aoe-dark/80 border-t border-aoe-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <h2 class="font-medieval text-3xl sm:text-4xl font-bold text-white mb-2">
+                            STREAMS & <span class="gold-text-gradient">PARTICIPANTS</span>
+                        </h2>
+                        <p class="text-gray-400 text-sm">Tune into your favorite player's POV stream or catch the official live cast below.</p>
+                    </div>
+
+                    <button id="copyAllStreams" class="bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors flex items-center space-x-2 self-start md:self-auto shadow-md">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copy All Stream Links</span>
+                    </button>
+                </div>
+
+                <!-- Complete 8-Player Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    
+                    <!-- Player 1: Hera -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                H
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">Hera</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/hera</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/hera" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 2: FreakinAndy -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                F
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">FreakinAndy</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/freakinandy</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/freakinandy" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 3: DaveAOE -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                D
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">DaveAOE</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/dave_aoe</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/dave_aoe" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 4: Lewis -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                L
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">Lewis</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/lewisaoe</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/lewisaoe" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 5: MbL -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                M
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">MbL</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/mblaoc</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/mblaoc" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 6: Jordan -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                J
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">Jordan</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/jordan_aoe</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/jordan_aoe" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 7: T90 -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                T
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">T90</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/t90official</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/t90official" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                    <!-- Player 8: Viper -->
+                    <div class="glass-panel rounded-xl p-5 border border-purple-500/40 hover:border-purple-400 transition-all relative overflow-hidden group">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-purple-900/60 text-purple-300 text-[10px] font-bold font-mono px-2.5 py-1 rounded border border-purple-500/30">
+                                CONFIRMED PARTICIPANT
+                            </span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" title="Confirmed Participant"></span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-900/80 border border-purple-400 flex items-center justify-center font-bold text-white text-lg">
+                                V
+                            </div>
+                            <div>
+                                <h3 class="font-medieval font-bold text-white text-lg group-hover:text-purple-300 transition-colors">Viper</h3>
+                                <p class="text-xs text-gray-400">twitch.tv/theviper</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/theviper" target="_blank" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa-brands fa-twitch"></i>
+                            <span>Watch Stream</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Featured Spectator Host Banner (Green Accent, Positioned Below) -->
+                <div class="glass-panel rounded-2xl p-6 sm:p-8 border-2 border-emerald-500/60 bg-gradient-to-r from-emerald-950/40 via-aoe-card to-aoe-card shadow-lg shadow-emerald-950/50 hover:border-emerald-400 transition-all">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center space-x-5">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-900/80 border-2 border-emerald-400 flex items-center justify-center font-bold text-emerald-200 text-3xl shadow-md flex-shrink-0">
+                                D
+                            </div>
+                            <div>
+                                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950/80 text-emerald-300 text-xs font-bold font-mono border border-emerald-500/50 mb-2">
+                                    <i class="fa-solid fa-headset text-emerald-400"></i>
+                                    <span>OFFICIAL SPECTATOR STREAM</span>
+                                </div>
+                                <h3 class="font-medieval text-2xl sm:text-3xl font-bold text-white">David810</h3>
+                                <p class="text-sm text-emerald-200/80">Live Spectator Cast</p>
+                            </div>
+                        </div>
+                        <a href="https://www.twitch.tv/david810s" target="_blank" class="w-full md:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medieval font-bold px-8 py-4 rounded-xl transition-all text-sm uppercase tracking-wider flex items-center justify-center space-x-3 shadow-lg shadow-emerald-950/80 hover:shadow-emerald-500/30">
+                            <i class="fa-brands fa-twitch text-xl"></i>
+                            <span>Watch Spectator Cast</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-aoe-dark border-t border-aoe-border py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center space-x-3">
+                    <img src="https://agebuddies.com/Age_Buddies_Logo.png" alt="Age Buddies Shield Logo" class="w-8 h-8 rounded object-cover border border-aoe-gold/40" />
+                    <span class="font-medieval font-bold text-aoe-parchment text-sm tracking-wider">AGE BUDDIES</span>
+                </div>
+
+                <div class="text-xs text-gray-500 text-center font-mono">
+                    Organized by Age Buddies • Onager Micro Invitational 2026
+                </div>
+
+                <div class="flex items-center space-x-6 text-gray-400">
+                    <a href="https://discord.gg/QrVPJdHRwv" target="_blank" class="hover:text-aoe-gold transition-colors text-lg" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://www.youtube.com/watch?v=Zp0ZD-nXgZE" target="_blank" class="hover:text-aoe-gold transition-colors text-lg" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Target date: October 2, 2026 @ 19:00 GMT (UTC)
+            const targetDate = new Date(Date.UTC(2026, 9, 2, 19, 0, 0)).getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference <= 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
+
+            // Initial call and set 1-second interval
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Copy all stream links helper button
+            const copyBtn = document.getElementById('copyAllStreams');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const streams = [
+                        "Hera: https://www.twitch.tv/hera",
+                        "FreakinAndy: https://www.twitch.tv/freakinandy",
+                        "DaveAOE: https://www.twitch.tv/dave_aoe",
+                        "Lewis: https://www.twitch.tv/lewisaoe",
+                        "MbL: https://www.twitch.tv/mblaoc",
+                        "Jordan: https://www.twitch.tv/jordan_aoe",
+                        "T90: https://www.twitch.tv/t90official",
+                        "Viper: https://www.twitch.tv/theviper",
+                        "Spectator Cast (David810): https://www.twitch.tv/david810s"
+                    ].join("\n");
+
+                    // Copy using textarea fallback
+                    const textarea = document.createElement('textarea');
+                    textarea.value = streams;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Copied All Links!</span>`;
+                    copyBtn.classList.replace('bg-purple-700', 'bg-emerald-600');
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.classList.replace('bg-emerald-600', 'bg-purple-700');
+                    }, 2500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
